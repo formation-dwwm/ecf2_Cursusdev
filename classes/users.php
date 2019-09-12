@@ -47,12 +47,12 @@ class Users {
   }
 
   /* Creation d'utilisateur */
-  public static function post_users($firstName, $lastName, $birthday, $adress1, $adress2, $postal, $phone, $idS, &$db) {
+  public static function post_users($firstName, $lastName, $birthday, $adress1, $adress2, $postal, $phone, $service, &$db) {
 
     try {
        // Insertion des données dans la base de données
        $req = $db->prepare('INSERT INTO users (firstName, lastName, birthday, adress1, adress2, postal, phone, services) VALUES (?, ?, ?, ?, ?, ?, ?, ?);');
-       $req->execute(array($firstName, $lastName, $birthday, $adress1, $adress2, $postal, $phone, $idS));
+       $req->execute(array($firstName, $lastName, $birthday, $adress1, $adress2, $postal, $phone, $service));
 
     } catch (PDOException $e) {
       /* Exception (erreur SQL) */
@@ -62,6 +62,46 @@ class Users {
     /* Si aucune exception ne se produit, retourne true */
     return true;
   }
+
+  public static function get_USERSjointure(&$db) {
+
+    try {
+
+      $req = $db->prepare('SELECT * FROM users INNER JOIN Services ON users.services = services.idS;');
+      $req->execute();
+      $req->setFetchMode(PDO::FETCH_OBJ);
+      $USERSjointure = $req->fetchAll();
+
+   } catch (PDOException $e) {
+     /* Exception (erreur SQL) */
+     echo $e->getMessage();
+     return false;
+   }
+   /* Si aucune exception ne se produit, retourne true */
+   return $USERSjointure;
+ }
+
+ public static function get_IDjointure($idS, &$db) {
+
+  try {
+
+    $req = $db->prepare('SELECT * FROM users INNER JOIN Services ON users.services = services.idS WHERE idS=:idS;');
+    $req->execute(
+      array(
+        ':idS' => $idS
+      )
+    );
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $IDjointure = $req->fetchAll();
+
+ } catch (PDOException $e) {
+   /* Exception (erreur SQL) */
+   echo $e->getMessage();
+   return false;
+ }
+ /* Si aucune exception ne se produit, retourne true */
+ return $IDjointure;
+}
 
   /* Supprimer un utilisateur */
   public static function delete_users($idU, &$db) {

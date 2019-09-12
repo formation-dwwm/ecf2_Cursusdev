@@ -29,11 +29,10 @@ require_once 'main.php';
         <li class="nav-item <?php echo $activeCreate; ?>">
           <a class="nav-link" href="./form.php" tabindex="2">Create</a>
         </li>
-        <li >
-
-        </li>
       </ul>
-        <select class="form-control" name="idS" style="margin-left:150px;width:250px;">
+      <form name="PostName" method="post">
+        <select class="form-control" name="idSMenu" id="idSMenu" onchange="PostName.submit()" style="margin-left:150px;width:250px;">
+          <option value="choix" selected>Choix de service</option>
           <?php foreach ($dataServices as $key => $value) {
           ?>
           <option value="<?php echo $dataServices[$key]->{'idS'}; ?>"><?php echo $dataServices[$key]->{'nameService'}; ?></option>
@@ -41,6 +40,18 @@ require_once 'main.php';
           }
           ?>
         </select>
+        <!-- <input type="hidden" name="valueIndex" value=""/> -->
+      </form>
     </div>
   </nav>
 
+  <!-- <script>
+    var object = document.forms[0].idSMenu;
+    var index = object.selectedIndex;
+    var valueIndex =  object.options[index].value;
+    var content = object.options[index].text;
+    // document.write(value);
+    var valueControl = document.querySelector('input[name="valueIndex"]');
+    valueControl.value = valueIndex;
+    console.log(valueIndex);
+  </script> -->

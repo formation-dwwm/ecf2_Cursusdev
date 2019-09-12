@@ -24,27 +24,27 @@ require_once 'header.php';
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($dataUsers as $key => $value) {
-          $idU =  $dataUsers[$key]->{'idU'};
-        ?>
-        <tr>
-          <td><?php echo $dataUsers[$key]->{'firstName'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'lastName'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'birthday'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'adress1'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'adress2'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'postal'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'phone'}; ?></td>
-          <td><?php echo $dataUsers[$key]->{'services'}; ?></td>
-
-          <td>
-            <form method="POST">
-                <input type="submit" class="btn btn-danger" name="delete" value="X" />
-                <input type="hidden" class="btn btn-warning" name="idU" value="<?php echo $idU; ?>" />
-            </form>
-          </td>
-        </tr>
-        <?php
+        <?php if (isset($jointure)) { foreach ($jointure as $key => $value) {
+          $idU =  $jointure[$key]->{'idU'};
+          ?>
+          <tr>
+            <td><?php echo $jointure[$key]->{'firstName'}; ?></td>
+            <td><?php echo $jointure[$key]->{'lastName'}; ?></td>
+            <td><?php echo $jointure[$key]->{'birthday'}; ?></td>
+            <td><?php echo $jointure[$key]->{'adress1'}; ?></td>
+            <td><?php echo $jointure[$key]->{'adress2'}; ?></td>
+            <td><?php echo $jointure[$key]->{'postal'}; ?></td>
+            <td><?php echo $jointure[$key]->{'phone'}; ?></td>
+            <td><?php echo $jointure[$key]->{'nameService'}; ?></td>
+            <td>
+              <form method="POST">
+                  <input type="submit" class="btn btn-danger" name="delete" value="X" />
+                  <input type="hidden" class="btn btn-warning" name="idU" value="<?php echo $idU; ?>" />
+              </form>
+            </td>
+          </tr>
+          <?php
+          }
         }
         ?>
       </tbody>

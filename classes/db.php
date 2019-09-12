@@ -9,7 +9,7 @@ class Db {
   private $connection_db;
   
   const DB_USERNAME = 'cursusdev';
-  const DB_PASSWORD ='cursus@2019';
+  const DB_PASSWORD = 'cursus@2019';
   
   /* Constructeur */
   private function __construct() {

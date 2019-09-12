@@ -16,13 +16,15 @@ require_once 'header.php';
         Numéro téléphone: <input type="text" class="form-control" name="phone" value="06-07-08-09-10" />
         Nom de service:
         <select class="form-control" name="idS">
+          <option value="0" selected>Choix de service</option>
           <?php foreach ($dataServices as $key => $value) {
           ?>
-          <option value="<?php echo $dataServices[$key]->{'idS'};; ?>"><?php echo $dataServices[$key]->{'nameService'}; ?></option>
+          <option value="<?php echo $dataServices[$key]->{'idS'}; ?>"><?php echo $dataServices[$key]->{'nameService'}; ?></option>
           <?php
           }
           ?>
         </select>
+        <?php if (isset($IDSnull)) { echo $IDSnull; } ?>
     </div>
     <input type="submit" class="btn btn-primary" name="form" value="Ajouter" />
   </form>

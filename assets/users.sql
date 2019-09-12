@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3305
--- Généré le :  jeu. 12 sep. 2019 à 14:48
+-- Généré le :  jeu. 12 sep. 2019 à 23:18
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -38,25 +38,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adress2` text NOT NULL,
   `postal` char(5) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  PRIMARY KEY (`idU`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `services` int(11) NOT NULL,
+  PRIMARY KEY (`idU`),
+  KEY `services` (`services`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`idU`, `firstName`, `lastName`, `birthday`, `adress1`, `adress2`, `postal`, `phone`) VALUES
-(1, 'Cursusdev', 'Dev', '2000-12-01', 'Avenue Charles de Gaule', 'RÃ©sidence BeausÃ©jour', '83200', '06-07-08-09-10');
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `FK_Users_Service` FOREIGN KEY (`idU`) REFERENCES `services` (`idS`);
+INSERT INTO `users` (`idU`, `firstName`, `lastName`, `birthday`, `adress1`, `adress2`, `postal`, `phone`, `services`) VALUES
+(5, 'Cursusdev', 'Dev', '2000-05-05', 'Avenue Charles de Gaule', 'RÃ©sidence BeausÃ©jour', '83200', '06-07-08-09-10', 6),
+(6, 'Cursusdev', 'Dev', '2000-05-05', 'Avenue Charles de Gaule', 'RÃ©sidence BeausÃ©jour', '83200', '06-07-08-09-10', 1),
+(15, 'Cursusdev', 'Dev', '2000-05-05', 'Avenue Charles de Gaule', 'RÃ©sidence BeausÃ©jour', '83200', '06-07-08-09-10', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

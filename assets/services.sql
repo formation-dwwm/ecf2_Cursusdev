@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3305
--- Généré le :  jeu. 12 sep. 2019 à 14:48
+-- Généré le :  jeu. 12 sep. 2019 à 23:18
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -41,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`idS`, `nameService`, `descriptionService`) VALUES
-(1, 'Maintenance', 'Les spécialistes du Hardware'),
-(2, 'Web Developer', 'Pour eux tout est code'),
-(3, 'Web Developer', 'Pour eux tout est code'),
+(1, 'Maintenance1', 'Les spécialistes du Hardware'),
+(2, 'Web Developer1', 'Pour eux tout est code'),
+(3, 'Web Developer2', 'Pour eux tout est code'),
 (4, 'Web Designer', 'Y a que le CSS dans la vie'),
-(5, 'Reférenceur', 'Les spécialistes du Hardware'),
-(6, 'Maintenance', 'Regarde les Serps Google du matin au soir et du soir au matin');
+(5, 'Referenceur', 'Les spécialistes du Hardware'),
+(6, 'Maintenance2', 'Regarde les Serps Google du matin au soir et du soir au matin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
