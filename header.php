@@ -17,7 +17,6 @@ require_once 'main.php';
   <body>
 <?php
 
-
 ?>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <h3 tabindex="0" >Enregistrement utilisateurs</h3>
@@ -32,20 +31,25 @@ require_once 'main.php';
       </ul>
       <form name="PostName" method="post">
         <select class="form-control" name="idSMenu" id="idSMenu" onchange="PostName.submit()" style="margin-left:150px;width:250px;">
-          <option value="choix" selected>Choix de service</option>
+          <option value="choix" <?php $echoMenuSelected("choix");  ?>
+          >Choix de service</option>
           <?php foreach ($dataServices as $key => $value) {
           ?>
-          <option value="<?php echo $dataServices[$key]->{'idS'}; ?>"><?php echo $dataServices[$key]->{'nameService'}; ?></option>
+          <option value="<?php echo $dataServices[$key]->{'idS'}; ?>"
+                  <?php $echoMenuSelected($dataServices[$key]->{'idS'});  ?>
+          >
+            <?php echo $dataServices[$key]->{'nameService'}; ?>
+          </option>
           <?php
           }
           ?>
         </select>
-        <!-- <input type="hidden" name="valueIndex" value=""/> -->
+        <input type="hidden" name="valueIndex" value=""/> 
       </form>
     </div>
   </nav>
 
-  <!-- <script>
+  <script>
     var object = document.forms[0].idSMenu;
     var index = object.selectedIndex;
     var valueIndex =  object.options[index].value;
@@ -54,4 +58,4 @@ require_once 'main.php';
     var valueControl = document.querySelector('input[name="valueIndex"]');
     valueControl.value = valueIndex;
     console.log(valueIndex);
-  </script> -->
+  </script>

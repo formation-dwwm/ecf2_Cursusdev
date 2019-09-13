@@ -8,8 +8,8 @@ require_once 'classes/services.php';
 
 /* Classes actives menu */
 if (isset($_SERVER['REQUEST_URI'])) {
-  $activeAccueil = ($_SERVER['REQUEST_URI'] == '/ecf2_cursusdev/index.php') ? 'active' : '';
-  $activeCreate = ($_SERVER['REQUEST_URI'] == '/ecf2_cursusdev/form.php') ? 'active' : ''; 
+  $activeAccueil = ($_SERVER['REQUEST_URI'] == '/ecf2_Cursusdev/index.php') ? 'active' : '';
+  $activeCreate = ($_SERVER['REQUEST_URI'] == '/ecf2_Cursusdev/form.php') ? 'active' : ''; 
 }
 
 /* Instancie la classe de connection à la base de données */
@@ -53,6 +53,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete']) && isset($_POST['idU']))
     $users->delete_users($idU, $db);
 }
 
+$idSMenu = "choix";
 if (isset($_POST['idSMenu'])) {
   $idSMenu = $_POST['idSMenu'];
   // echo $idSMenu;
@@ -61,9 +62,8 @@ if (isset($_POST['idSMenu'])) {
   // echo $valueIndex;
 
     if ($idSMenu == "choix") {
-      echo 'Success';
       $jointure = $users->get_USERSjointure($db);
-      var_dump($jointure);
+      // var_dump($jointure);
 
     } else {
       $jointure = $users->get_IDjointure($idSMenu, $db);
@@ -76,7 +76,11 @@ $dataUsers = $users->get_users($db);
 $dataServices = $services->get_services($db);
 // var_dump($dataServices);
 
-
+// Retourne true si le menu sélectionné correspond à $keyToCheck
+// On utilise une fonction anonyme ici, de façon a pouvoir capturer une variable extérieure ($idSMenu)
+$echoMenuSelected = function($keyToCheck) use ($idSMenu) {
+  echo ($idSMenu === $keyToCheck ? 'selected' : '');
+};
 
 require_once 'footer.php';
 
